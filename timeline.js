@@ -12,12 +12,13 @@ var scrollTimeline = null;
 var updateInterval = 10;
 var scrolling = false;
 
+// sets the mouseX and mouseY variables
 window.onmousemove = function(event) {
 	mouseX = event.clientX;
 	mouseY = event.clientY;
-	if (!scrollTimeline) {
+	/*if (!scrollTimeline) {
 		scrollTimeline = window.setInterval(scroll, updateInterval);
-	}
+	}*/
 };
 
 // Global access to all the project li's
