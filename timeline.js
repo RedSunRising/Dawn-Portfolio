@@ -32,8 +32,15 @@ for (i = 0; i < projects.length; i++) {
 var timeline = document.querySelector("#timeline");
 timeline.onmouseout = unslide; // Undo slides when out of timeline
 
+// variable for requestAnimationFrame
+var scrollFrame = null;
 
-function scroll(event) {
+function scroll() {
+	scrollFrame = requestAnimationFrame(scroll);
+
+	timeline.style.left = mouseX + 'px';
+
+	/*// orginal animation logic
 	var buffer = window.innerWidth/4;
 
 	var distanceToCenter = Math.abs(window.innerWidth/2-mouseX);
@@ -50,8 +57,11 @@ function scroll(event) {
 		scrolling = false;
 		window.clearInterval(scrollTimeline);
 		scrollTimeline = null;
-	}
+	}*/
 }
+
+scroll();
+window.setTimeout(function() { cancelAnimationFrame(scroll); }, 5000);
 
 function scrollLeft(speed) {
 	scrollRight(speed*-1);
