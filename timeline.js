@@ -16,9 +16,9 @@ var scrolling = false;
 window.onmousemove = function(event) {
 	mouseX = event.clientX;
 	mouseY = event.clientY;
-	/*if (!scrollTimeline) {
+	if (!scrollTimeline) {
 		scrollTimeline = window.setInterval(scroll, updateInterval);
-	}*/
+	}
 };
 
 // Global access to all the project li's
@@ -32,19 +32,16 @@ for (i = 0; i < projects.length; i++) {
 var timeline = document.querySelector("#timeline");
 timeline.onmouseout = unslide; // Undo slides when out of timeline
 
-// variable for requestAnimationFrame
-var scrollFrame = null;
+//variable for requestAnimationFrame
+/*var scrollFrame = null;*/
 
-function scroll() {
-	scrollFrame = requestAnimationFrame(scroll);
+function scroll(event) {
 
-	timeline.style.left = mouseX + 'px';
-
-	/*// orginal animation logic
 	var buffer = window.innerWidth/4;
 
 	var distanceToCenter = Math.abs(window.innerWidth/2-mouseX);
 	var speed = distanceToCenter/(window.innerWidth/2);
+
 	if (mouseX < buffer) {
 		scrolling = true;
 		scrollLeft(speed);
@@ -57,17 +54,16 @@ function scroll() {
 		scrolling = false;
 		window.clearInterval(scrollTimeline);
 		scrollTimeline = null;
-	}*/
+	}
 }
 
-scroll();
-window.setTimeout(function() { cancelAnimationFrame(scroll); }, 5000);
 
 function scrollLeft(speed) {
 	scrollRight(speed*-1);
 }
 
 function scrollRight(speed) {
+
 	var leftPixels = parseInt(getStyleProp(timeline, 'left'), 10);
 	var toShift = Math.pow(speed,3)*updateInterval;
 	var newLeft = leftPixels - toShift;
@@ -76,6 +72,22 @@ function scrollRight(speed) {
 		timeline.style.left = newLeft + 'px';
 	}
 }
+
+timeline.onmouseover = myScrollFrame;
+//timeline.onmouseout = stopAnimation;
+
+var hero = document.getElementsByClassName('hero-overlay');
+hero.onmouseover = stopAnimation;
+
+function myScrollFrame(){
+	scrollFrame =  requestAnimationFrame(myScrollFrame);
+	timeline.style.left = mouseX + 'px';
+}
+
+function stopAnimation(){
+	cancelAnimationFrame(myScrollFrame);
+}
+
 
 function slide(event)
 {
