@@ -77,11 +77,13 @@ timeline.onmouseover = myScrollFrame;
 //timeline.onmouseout = stopAnimation;
 
 var hero = document.getElementsByClassName('hero-overlay');
+console.log(hero);
+//hero.style.background = 'red';
 
 function myScrollFrame(){
 	scrollFrame =  requestAnimationFrame(myScrollFrame);
 	timeline.style.left = mouseX + 'px';
-	hero.onmouseover = cancelAnimationFrame(myScrollFrame);
+	//hero.onmouseover = cancelAnimationFrame(myScrollFrame);
 }
 
 

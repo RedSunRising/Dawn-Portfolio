@@ -14,7 +14,7 @@ html, body {
 
 .hero-overlay {
 	height: 50%;
-	background: url("./hero.jpg")
+	/*background: url("./hero.jpg")*/
 }
 
 nav#timeline {
