@@ -30,7 +30,7 @@ for (i = 0; i < projects.length; i++) {
 
 // Global access to the timeline container
 var timeline = document.querySelector("#timeline");
-timeline.onmouseout = unslide; // Undo slides when out of timeline
+//timeline.onmouseout = unslide; // Undo slides when out of timeline
 
 //variable for requestAnimationFrame
 /*var scrollFrame = null;*/
@@ -77,16 +77,13 @@ timeline.onmouseover = myScrollFrame;
 //timeline.onmouseout = stopAnimation;
 
 var hero = document.getElementsByClassName('hero-overlay');
-hero.onmouseover = stopAnimation;
 
 function myScrollFrame(){
 	scrollFrame =  requestAnimationFrame(myScrollFrame);
 	timeline.style.left = mouseX + 'px';
+	hero.onmouseover = cancelAnimationFrame(myScrollFrame);
 }
 
-function stopAnimation(){
-	cancelAnimationFrame(myScrollFrame);
-}
 
 
 function slide(event)
