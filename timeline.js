@@ -9,7 +9,7 @@ function getStyleProp(elem, prop){
 var mouseX = null;
 var mouseY = null;
 var scrollTimeline = null;
-var updateInterval = 10;
+var updateInterval = 15;
 var scrolling = false;
 
 // sets the mouseX and mouseY variables
@@ -38,9 +38,6 @@ var scrollFrame = null;
 function scroll() {
 	scrollFrame = requestAnimationFrame(scroll);
 
-	//timeline.style.left = mouseX + 'px';
-
-	// orginal animation logic
 	var buffer = window.innerWidth/4;
 
 	var distanceToCenter = Math.abs(window.innerWidth/2-mouseX);
@@ -55,24 +52,16 @@ function scroll() {
 		scrolling = true;
 		scrollRight(speed);
 	}
-	else {
-		scrolling = false;
-		// window.clearInterval(scrollTimeline);
-		// scrollTimeline = null;
-	}
+	
 }
 
+// function to stop the scrolling
 function stopAnimation(){
 	cancelAnimationFrame(scrollFrame);
 }
 
 timeline.onmouseover = scroll;
 timeline.onmouseout = stopAnimation;
-
-/*var hero = document.getElementsByClassName('hero-overlay');
-
-hero.onmouseover = cancelAnimationFrame(scrollFrame);*/
-//window.setTimeout(function() { cancelAnimationFrame(scrollFrame); }, 20000);
 
 function scrollLeft(speed) {
 	scrollRight(speed*-1);
@@ -87,15 +76,12 @@ function scrollRight(speed) {
 		timeline.style.left = newLeft + 'px';
 	}
 }
-//timeline.onmouseout = stopAnimation;
 
 function myScrollFrame(){
 	scrollFrame =  requestAnimationFrame(myScrollFrame);
 	timeline.style.left = mouseX + 'px';
 	
 }
-
-//timeline.onmouseover = myScrollFrame;
 
 function slide(event)
 {
@@ -117,3 +103,24 @@ function unslide(event) {
 		projects[i].classList.remove("slideLeft");
 	}
 }
+
+function onTimelineHover(event){
+	var test = document.elementFromPoint(mouseX, mouseY);
+	console.log(test);
+}
+
+/*var timelineSection = document.getElementById('timeline');
+
+timelineSection.addEventListener('mouseover', onTimelineHover, false);*/
+
+/*timeline.onmouseover = onTimelineHover;
+*//*function onTimelineHover(event){
+	for (i = 0; i < projects.length; i++){
+		if (i === projects.indexOf(this)) {
+			projects[i].classList.add("onHover");
+		}
+		else{
+			projects[i].classList.remove("onHover");
+		}
+	}
+}*/

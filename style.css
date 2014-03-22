@@ -56,6 +56,12 @@ nav#timeline li:hover .description {
 	-webkit-transform: translateX(25px);
 }
 
+.onHover{
+	-webkit-filter: saturate(50);
+	-webkit-transform: translateX(25px);
+}
+
+
 /* Applied to the active panel and all to the left */
 .slideLeft{
 	-webkit-transform: translateX(-25px);
@@ -88,35 +94,35 @@ nav#timeline li:hover .description {
 hue-rotate instead of images, but that is not performant. */
 li#zero {
 	left: calc(25em * 0);
-	/*background: url("./zero.jpg");*/
+	background: url("./zero.jpg");
 }
 
 li#one {
 	left: calc(25em * 1);
-	/*background: url("./one.jpg");
-*/}
+	background: url("./one.jpg");
+}
 
 li#two {
 	left: calc(25em * 2);
-	/*background: url("./two.jpg");
-*/}
+	background: url("./two.jpg");
+}
 
 li#three {
 	left: calc(25em * 3);
-	/*background: url("./three.jpg")*/;
+	background: url("./three.jpg");
 }
 
 li#four {
 	left: calc(25em * 4);
-	/*background: url("./four.jpg");*/
+	background: url("./four.jpg");
 }
 
 li#five {
 	left: calc(25em * 5);
-	/*background: url("./five.jpg");*/
+	background: url("./five.jpg");
 }
 
 li#six {
 	left: calc(25em * 6);
-	/*background: url("./six.jpg");*/
+	background: url("./six.jpg");
 }
