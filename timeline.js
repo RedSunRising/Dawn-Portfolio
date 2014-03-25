@@ -104,23 +104,22 @@ function unslide(event) {
 	}
 }
 
-function onTimelineHover(event){
-	var test = document.elementFromPoint(mouseX, mouseY);
-	console.log(test);
-}
-
 /*var timelineSection = document.getElementById('timeline');
 
 timelineSection.addEventListener('mouseover', onTimelineHover, false);*/
 
-/*timeline.onmouseover = onTimelineHover;
-*//*function onTimelineHover(event){
-	for (i = 0; i < projects.length; i++){
-		if (i === projects.indexOf(this)) {
+//timeline.onmouseover = onTimelineHover;
+var test = document.elementFromPoint(mouseX, mouseY);
+	console.log(test);
+function onTimelineHover(test){
+	
+	for (var i = 0; i < projects.length; i++) {
+
+		if (test === projects.indexOf(this)) {
 			projects[i].classList.add("onHover");
 		}
 		else{
 			projects[i].classList.remove("onHover");
 		}
 	}
-}*/
+}
