@@ -26,6 +26,7 @@ var projects = document.querySelectorAll('#timeline li.project');
 projects = Array.prototype.slice.call(projects);
 for (i = 0; i < projects.length; i++) {
 	projects[i].onmouseover = slide; // Slide via highlight
+	projects[i].onmouseover = timelineHover;
 }
 
 // Global access to the timeline container
@@ -72,7 +73,7 @@ function scrollRight(speed) {
 	var toShift = Math.pow(speed,3)*updateInterval;
 	var newLeft = leftPixels - toShift;
 
-	if (newLeft >= -1750 && newLeft  <= 0) {
+	if (newLeft >= -1400 && newLeft  <= 0) {
 		timeline.style.left = newLeft + 'px';
 	}
 }
@@ -104,18 +105,21 @@ function unslide(event) {
 	}
 }
 
+
 /*var timelineSection = document.getElementById('timeline');
 
 timelineSection.addEventListener('mouseover', onTimelineHover, false);*/
 
-//timeline.onmouseover = onTimelineHover;
-var test = document.elementFromPoint(mouseX, mouseY);
+/*var test = document.elementFromPoint(mouseX, mouseY);
 	console.log(test);
-function onTimelineHover(test){
-	
-	for (var i = 0; i < projects.length; i++) {
+*/
+function timelineHover(event){
 
-		if (test === projects.indexOf(this)) {
+	var test = document.elementFromPoint(event.clientX, event.clientY);
+	console.log(test);
+
+	for (var i = 0; i < projects.length; i++) {
+		if ( i === projects.indexOf(this)) {
 			projects[i].classList.add("onHover");
 		}
 		else{
@@ -123,3 +127,7 @@ function onTimelineHover(test){
 		}
 	}
 }
+
+/*for (var i = 0; projects.length; i++){
+	projects[i].onmouseover = timelineHover;
+}*/

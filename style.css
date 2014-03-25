@@ -47,14 +47,14 @@ nav#timeline li, .description {
 }
 
 /* Applied to the active panel */
-nav#timeline li:hover {
+/*nav#timeline li:hover {
 	-webkit-filter: saturate(0);
-}
+}*/
 
-nav#timeline li:hover .description {
+/*nav#timeline li:hover .description {
 	color: #CCC;
 	-webkit-transform: translateX(25px);
-}
+}*/
 
 .onHover{
 	-webkit-filter: saturate(50);
