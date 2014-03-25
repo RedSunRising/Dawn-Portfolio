@@ -51,14 +51,13 @@ nav#timeline li, .description {
 	-webkit-filter: saturate(0);
 }*/
 
-/*nav#timeline li:hover .description {
+nav#timeline li:hover .description {
 	color: #CCC;
 	-webkit-transform: translateX(25px);
-}*/
+}
 
 .onHover{
-	-webkit-filter: saturate(50);
-	-webkit-transform: translateX(25px);
+	-webkit-filter: saturate(0);
 }
 
 

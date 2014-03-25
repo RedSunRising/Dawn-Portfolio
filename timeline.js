@@ -16,7 +16,7 @@ var scrolling = false;
 window.onmousemove = function(event) {
 	mouseX = event.clientX;
 	mouseY = event.clientY;
-	/*if (!scrollTimeline) {
+/*	if (!scrollTimeline) {
 		scrollTimeline = window.setInterval(scroll, updateInterval);
 	}*/
 };
@@ -36,6 +36,7 @@ timeline.onmouseout = unslide; // Undo slides when out of timeline
 // variable for requestAnimationFrame
 var scrollFrame = null;
 
+// function that scrolls with requestAnimationFrame
 function scroll() {
 	scrollFrame = requestAnimationFrame(scroll);
 
@@ -61,6 +62,7 @@ function stopAnimation(){
 	cancelAnimationFrame(scrollFrame);
 }
 
+// calls scrolling functions on timeline mouseover
 timeline.onmouseover = scroll;
 timeline.onmouseout = stopAnimation;
 
@@ -78,11 +80,11 @@ function scrollRight(speed) {
 	}
 }
 
-function myScrollFrame(){
+/*function myScrollFrame(){
 	scrollFrame =  requestAnimationFrame(myScrollFrame);
 	timeline.style.left = mouseX + 'px';
 	
-}
+}*/
 
 function slide(event)
 {
@@ -113,13 +115,14 @@ timelineSection.addEventListener('mouseover', onTimelineHover, false);*/
 /*var test = document.elementFromPoint(mouseX, mouseY);
 	console.log(test);
 */
+
 function timelineHover(event){
 
 	var test = document.elementFromPoint(event.clientX, event.clientY);
 	console.log(test);
 
 	for (var i = 0; i < projects.length; i++) {
-		if ( i === projects.indexOf(this)) {
+		if ( i == projects.indexOf(this)) {
 			projects[i].classList.add("onHover");
 		}
 		else{
