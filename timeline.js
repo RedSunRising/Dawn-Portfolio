@@ -19,14 +19,16 @@ window.onmousemove = function(event) {
 /*	if (!scrollTimeline) {
 		scrollTimeline = window.setInterval(scroll, updateInterval);
 	}*/
+	console.log(mouseX);
 };
+
 
 // Global access to all the project li's
 var projects = document.querySelectorAll('#timeline li.project');
 projects = Array.prototype.slice.call(projects);
 for (i = 0; i < projects.length; i++) {
 	projects[i].onmouseover = slide; // Slide via highlight
-	projects[i].onmouseover = timelineHover;
+	//projects[i].onmouseover = timelineHover;
 }
 
 // Global access to the timeline container
@@ -54,11 +56,68 @@ function scroll() {
 		scrolling = true;
 		scrollRight(speed);
 	}
-	
+
+	var test = document.elementFromPoint(mouseX, mouseY);
+	if (test.id == "zero"){
+		for (var i = 0; i < projects.length; i++) {
+			if ( i == projects.indexOf(this)) {
+				projects[i].classList.add("onHover");
+			}
+			else{
+				projects[i].classList.remove("onHover");
+			}
+		}
+	}
+	else if (test.id == "one"){
+		for (var i = 0; i < projects.length; i++) {
+			if ( i == projects.indexOf(this)) {
+				projects[i].classList.add("onHover");
+			}
+			else{
+				projects[i].classList.remove("onHover");
+			}
+		}
+	}
+	else if (test.id == "two"){
+		for (var i = 0; i < projects.length; i++) {
+			if ( i == projects.indexOf(this)) {
+				projects[i].classList.add("onHover");
+			}
+			else{
+				projects[i].classList.remove("onHover");
+			}
+		}
+	}
+	else if (test.id == "three"){
+		for (var i = 0; i < projects.length; i++) {
+			if ( i == projects.indexOf(this)) {
+				projects[i].classList.add("onHover");
+			}
+			else{
+				projects[i].classList.remove("onHover");
+			}
+		}
+	}
+	else if (test.id == "four"){
+		for (var i = 0; i < projects.length; i++) {
+			if ( i == projects.indexOf(this)) {
+				projects[i].classList.add("onHover");
+			}
+			else{
+				projects[i].classList.remove("onHover");
+			}
+		}
+	}
+	else if (test.id == "five"){
+				projects[5].classList.add("onHover");
+
+		}
 }
 
 // function to stop the scrolling
 function stopAnimation(){
+	scrolling = false;
+	console.log(scrolling);
 	cancelAnimationFrame(scrollFrame);
 }
 
@@ -104,6 +163,7 @@ function unslide(event) {
 	for (i = 0; i < projects.length; i++) {
 		projects[i].classList.remove("slideRight");
 		projects[i].classList.remove("slideLeft");
+		projects[i].classList.remove("onHover");
 	}
 }
 
@@ -118,8 +178,8 @@ timelineSection.addEventListener('mouseover', onTimelineHover, false);*/
 
 function timelineHover(event){
 
-	var test = document.elementFromPoint(event.clientX, event.clientY);
-	console.log(test);
+	/*var test = document.elementFromPoint(event.clientX, event.clientY);
+	console.log(test);*/
 
 	for (var i = 0; i < projects.length; i++) {
 		if ( i == projects.indexOf(this)) {
@@ -130,6 +190,11 @@ function timelineHover(event){
 		}
 	}
 }
+
+/*while (scrolling == true){
+	var test = document.elementFromPoint(event.clientX, event.clientY);
+	console.log(test);
+}*/
 
 /*for (var i = 0; projects.length; i++){
 	projects[i].onmouseover = timelineHover;
