@@ -27,7 +27,7 @@ window.onmousemove = function(event) {
 var projects = document.querySelectorAll('#timeline li.project');
 projects = Array.prototype.slice.call(projects);
 for (i = 0; i < projects.length; i++) {
-	projects[i].onmouseover = slide; // Slide via highlight
+	//projects[i].onmouseover = slide; // Slide via highlight
 	//projects[i].onmouseover = timelineHover;
 }
 
@@ -59,63 +59,75 @@ function scroll() {
 
 	var test = document.elementFromPoint(mouseX, mouseY);
 	if (test.id == "zero"){
-		for (var i = 0; i < projects.length; i++) {
-			if ( i == projects.indexOf(this)) {
-				projects[i].classList.add("onHover");
-			}
-			else{
-				projects[i].classList.remove("onHover");
-			}
-		}
+				projects[0].classList.add("onHover");
+				projects[1].classList.remove("onHover");
+				projects[2].classList.remove("onHover");
+				projects[3].classList.remove("onHover");
+				projects[4].classList.remove("onHover");
+				projects[5].classList.remove("onHover");
+				projects[6].classList.remove("onHover");
 	}
 	else if (test.id == "one"){
-		for (var i = 0; i < projects.length; i++) {
-			if ( i == projects.indexOf(this)) {
-				projects[i].classList.add("onHover");
-			}
-			else{
-				projects[i].classList.remove("onHover");
-			}
-		}
+				projects[1].classList.add("onHover");
+				projects[0].classList.remove("onHover");
+				projects[2].classList.remove("onHover");
+				projects[3].classList.remove("onHover");
+				projects[4].classList.remove("onHover");
+				projects[5].classList.remove("onHover");
+				projects[6].classList.remove("onHover");
 	}
 	else if (test.id == "two"){
-		for (var i = 0; i < projects.length; i++) {
-			if ( i == projects.indexOf(this)) {
-				projects[i].classList.add("onHover");
-			}
-			else{
-				projects[i].classList.remove("onHover");
-			}
-		}
+				projects[2].classList.add("onHover");
+				projects[0].classList.remove("onHover");
+				projects[1].classList.remove("onHover");
+				projects[3].classList.remove("onHover");
+				projects[4].classList.remove("onHover");
+				projects[5].classList.remove("onHover");
+				projects[6].classList.remove("onHover");
 	}
 	else if (test.id == "three"){
-		for (var i = 0; i < projects.length; i++) {
-			if ( i == projects.indexOf(this)) {
-				projects[i].classList.add("onHover");
-			}
-			else{
-				projects[i].classList.remove("onHover");
-			}
-		}
-	}
+				projects[3].classList.add("onHover");
+				projects[0].classList.remove("onHover");
+				projects[1].classList.remove("onHover");
+				projects[2].classList.remove("onHover");
+				projects[4].classList.remove("onHover");
+				projects[5].classList.remove("onHover");
+				projects[6].classList.remove("onHover");
+	}	
 	else if (test.id == "four"){
-		for (var i = 0; i < projects.length; i++) {
-			if ( i == projects.indexOf(this)) {
-				projects[i].classList.add("onHover");
-			}
-			else{
-				projects[i].classList.remove("onHover");
-			}
-		}
+				projects[4].classList.add("onHover");
+				projects[0].classList.remove("onHover");
+				projects[1].classList.remove("onHover");
+				projects[2].classList.remove("onHover");
+				projects[3].classList.remove("onHover");
+				projects[5].classList.remove("onHover");
+				projects[6].classList.remove("onHover");
 	}
 	else if (test.id == "five"){
 				projects[5].classList.add("onHover");
-
-		}
+				projects[0].classList.remove("onHover");
+				projects[1].classList.remove("onHover");
+				projects[2].classList.remove("onHover");
+				projects[3].classList.remove("onHover");
+				projects[4].classList.remove("onHover");
+				projects[6].classList.remove("onHover");
+	}
+	else if (test.id == "six"){
+				projects[6].classList.add("onHover");
+				projects[0].classList.remove("onHover");
+				projects[1].classList.remove("onHover");
+				projects[2].classList.remove("onHover");
+				projects[3].classList.remove("onHover");
+				projects[4].classList.remove("onHover");
+				projects[5].classList.remove("onHover");
+	}
 }
 
 // function to stop the scrolling
 function stopAnimation(){
+		for (i = 0; i < projects.length; i++) {
+			projects[i].classList.remove("onHover");
+		}
 	scrolling = false;
 	console.log(scrolling);
 	cancelAnimationFrame(scrollFrame);
@@ -144,7 +156,11 @@ function scrollRight(speed) {
 	timeline.style.left = mouseX + 'px';
 	
 }*/
-
+function removeOnHover(){
+	for (i = 0; i < projects.length; i++) {
+			projects[i].classList.remove("onHover");
+		}
+}
 function slide(event)
 {
 	for (i = 0; i < projects.length; i++) {
@@ -163,7 +179,6 @@ function unslide(event) {
 	for (i = 0; i < projects.length; i++) {
 		projects[i].classList.remove("slideRight");
 		projects[i].classList.remove("slideLeft");
-		projects[i].classList.remove("onHover");
 	}
 }
 
