@@ -46,20 +46,18 @@ nav#timeline li, .description {
 	-webkit-transition: 300ms ease;
 }
 
-/* Applied to the active panel */
-/*nav#timeline li:hover {
-	-webkit-filter: saturate(0);
-}*/
-
 nav#timeline li:hover .description {
 	color: #CCC;
-	-webkit-transform: translateX(25px);
 }
 
 .onHover{
 	-webkit-filter: saturate(0);
 }
 
+.onHoverDescription{
+	color: #CCC;
+	-webkit-transition: 300ms ease;
+}
 
 /* Applied to the active panel and all to the left */
 .slideLeft{

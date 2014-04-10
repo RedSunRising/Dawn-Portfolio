@@ -31,6 +31,10 @@ for (i = 0; i < projects.length; i++) {
 	//projects[i].onmouseover = timelineHover;
 }
 
+var descriptions = document.querySelectorAll('#timeline description');
+descriptions = Array.prototype.slice.call(descriptions);
+console.log(descriptions);
+
 // Global access to the timeline container
 var timeline = document.querySelector("#timeline");
 timeline.onmouseout = unslide; // Undo slides when out of timeline
@@ -57,69 +61,81 @@ function scroll() {
 		scrollRight(speed);
 	}
 
-	var test = document.elementFromPoint(mouseX, mouseY);
-	if (test.id == "zero"){
+	var lowerTimeline = document.elementFromPoint(mouseX, mouseY);
+	if (lowerTimeline.id == "zero"){
 				projects[0].classList.add("onHover");
+				descriptions[0].classList.add("onHoverDescription");
 				projects[1].classList.remove("onHover");
-				projects[2].classList.remove("onHover");
-				projects[3].classList.remove("onHover");
-				projects[4].classList.remove("onHover");
-				projects[5].classList.remove("onHover");
-				projects[6].classList.remove("onHover");
+				descriptions[1]
+
 	}
-	else if (test.id == "one"){
+	else if (lowerTimeline.id == "one"){
 				projects[1].classList.add("onHover");
+				descriptions[1].classList.add("onHoverDescription");
 				projects[0].classList.remove("onHover");
+				descriptions[0].classList.remove("onHoverDescription");
 				projects[2].classList.remove("onHover");
-				projects[3].classList.remove("onHover");
-				projects[4].classList.remove("onHover");
-				projects[5].classList.remove("onHover");
-				projects[6].classList.remove("onHover");
+				descriptions[2].classList.remove("onHoverDescription");
 	}
-	else if (test.id == "two"){
+	else if (lowerTimeline.id == "two"){
 				projects[2].classList.add("onHover");
-				projects[0].classList.remove("onHover");
 				projects[1].classList.remove("onHover");
 				projects[3].classList.remove("onHover");
-				projects[4].classList.remove("onHover");
-				projects[5].classList.remove("onHover");
-				projects[6].classList.remove("onHover");
 	}
-	else if (test.id == "three"){
+	else if (lowerTimeline.id == "three"){
 				projects[3].classList.add("onHover");
-				projects[0].classList.remove("onHover");
-				projects[1].classList.remove("onHover");
 				projects[2].classList.remove("onHover");
 				projects[4].classList.remove("onHover");
-				projects[5].classList.remove("onHover");
-				projects[6].classList.remove("onHover");
 	}	
-	else if (test.id == "four"){
+	else if (lowerTimeline.id == "four"){
 				projects[4].classList.add("onHover");
-				projects[0].classList.remove("onHover");
-				projects[1].classList.remove("onHover");
-				projects[2].classList.remove("onHover");
 				projects[3].classList.remove("onHover");
 				projects[5].classList.remove("onHover");
-				projects[6].classList.remove("onHover");
 	}
-	else if (test.id == "five"){
+	else if (lowerTimeline.id == "five"){
 				projects[5].classList.add("onHover");
-				projects[0].classList.remove("onHover");
-				projects[1].classList.remove("onHover");
-				projects[2].classList.remove("onHover");
-				projects[3].classList.remove("onHover");
 				projects[4].classList.remove("onHover");
 				projects[6].classList.remove("onHover");
 	}
-	else if (test.id == "six"){
+	else if (lowerTimeline.id == "six"){
 				projects[6].classList.add("onHover");
-				projects[0].classList.remove("onHover");
-				projects[1].classList.remove("onHover");
-				projects[2].classList.remove("onHover");
-				projects[3].classList.remove("onHover");
-				projects[4].classList.remove("onHover");
 				projects[5].classList.remove("onHover");
+	}
+
+	var upperTimeline = document.elementFromPoint(mouseX, mouseY);
+	if (upperTimeline.id == "d-zero"){
+				descriptions[0].classList.add("onHover");
+				descriptions[1].classList.remove("onHover");
+
+	}
+	else if (upperTimeline.id == "d-one"){
+				descriptions[1].classList.add("onHover");
+				descriptions[0].classList.remove("onHover");
+				descriptions[2].classList.remove("onHover");
+	}
+	else if (upperTimeline.id == "d-two"){
+				descriptions[2].classList.add("onHover");
+				descriptions[1].classList.remove("onHover");
+				descriptions[3].classList.remove("onHover");
+	}
+	else if (upperTimeline.id == "d-three"){
+				descriptions[3].classList.add("onHover");
+				descriptions[2].classList.remove("onHover");
+				descriptions[4].classList.remove("onHover");
+	}	
+	else if (upperTimeline.id == "d-four"){
+				descriptions[4].classList.add("onHover");
+				descriptions[3].classList.remove("onHover");
+				descriptions[5].classList.remove("onHover");
+	}
+	else if (upperTimeline.id == "d-five"){
+				descriptions[5].classList.add("onHover");
+				descriptions[4].classList.remove("onHover");
+				descriptions[6].classList.remove("onHover");
+	}
+	else if (upperTimeline.id == "d-six"){
+				descriptions[6].classList.add("onHover");
+				descriptions[5].classList.remove("onHover");
 	}
 }
 
@@ -129,7 +145,6 @@ function stopAnimation(){
 			projects[i].classList.remove("onHover");
 		}
 	scrolling = false;
-	console.log(scrolling);
 	cancelAnimationFrame(scrollFrame);
 }
 
@@ -151,16 +166,6 @@ function scrollRight(speed) {
 	}
 }
 
-/*function myScrollFrame(){
-	scrollFrame =  requestAnimationFrame(myScrollFrame);
-	timeline.style.left = mouseX + 'px';
-	
-}*/
-function removeOnHover(){
-	for (i = 0; i < projects.length; i++) {
-			projects[i].classList.remove("onHover");
-		}
-}
 function slide(event)
 {
 	for (i = 0; i < projects.length; i++) {
@@ -183,18 +188,8 @@ function unslide(event) {
 }
 
 
-/*var timelineSection = document.getElementById('timeline');
-
-timelineSection.addEventListener('mouseover', onTimelineHover, false);*/
-
-/*var test = document.elementFromPoint(mouseX, mouseY);
-	console.log(test);
-*/
 
 function timelineHover(event){
-
-	/*var test = document.elementFromPoint(event.clientX, event.clientY);
-	console.log(test);*/
 
 	for (var i = 0; i < projects.length; i++) {
 		if ( i == projects.indexOf(this)) {
@@ -206,11 +201,3 @@ function timelineHover(event){
 	}
 }
 
-/*while (scrolling == true){
-	var test = document.elementFromPoint(event.clientX, event.clientY);
-	console.log(test);
-}*/
-
-/*for (var i = 0; projects.length; i++){
-	projects[i].onmouseover = timelineHover;
-}*/
