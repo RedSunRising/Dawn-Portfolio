@@ -66,7 +66,7 @@ function scroll() {
 				projects[0].classList.add("onHover");
 				descriptions[0].classList.add("onHoverDescription");
 				projects[1].classList.remove("onHover");
-				descriptions[1]
+				descriptions[1].classList.remove("onHoverDescription");
 
 	}
 	else if (lowerTimeline.id == "one"){

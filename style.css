@@ -40,6 +40,7 @@ nav#timeline li {
 	position: absolute; /* Absolute positioning to enable JS animation via style.left */
 	height: 100%;
 	width: 1920px; /* Width of individual backgrounds */
+	-web
 }
 
 nav#timeline li, .description {
