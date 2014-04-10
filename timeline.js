@@ -28,7 +28,7 @@ var projects = document.querySelectorAll('#timeline li.project');
 projects = Array.prototype.slice.call(projects);
 for (i = 0; i < projects.length; i++) {
 	//projects[i].onmouseover = slide; // Slide via highlight
-	//projects[i].onmouseover = timelineHover;
+	projects[i].onmouseout = timelineHover;
 }
 
 var descriptions = document.querySelectorAll('#timeline description');
@@ -187,17 +187,7 @@ function unslide(event) {
 	}
 }
 
-
-
 function timelineHover(event){
-
-	for (var i = 0; i < projects.length; i++) {
-		if ( i == projects.indexOf(this)) {
-			projects[i].classList.add("onHover");
-		}
-		else{
-			projects[i].classList.remove("onHover");
-		}
-	}
+	projects[i].classList.remove("onHover");
 }
 
