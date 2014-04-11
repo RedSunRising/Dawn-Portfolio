@@ -19,7 +19,6 @@ window.onmousemove = function(event) {
 /*	if (!scrollTimeline) {
 		scrollTimeline = window.setInterval(scroll, updateInterval);
 	}*/
-	console.log(mouseX);
 };
 
 
@@ -28,7 +27,7 @@ var projects = document.querySelectorAll('#timeline li.project');
 projects = Array.prototype.slice.call(projects);
 for (i = 0; i < projects.length; i++) {
 	//projects[i].onmouseover = slide; // Slide via highlight
-	projects[i].onmouseout = timelineHover;
+	//projects[i].onmouseout = timelineHover;
 }
 
 var descriptions = document.querySelectorAll('#timeline description');
@@ -64,18 +63,13 @@ function scroll() {
 	var lowerTimeline = document.elementFromPoint(mouseX, mouseY);
 	if (lowerTimeline.id == "zero"){
 				projects[0].classList.add("onHover");
-				descriptions[0].classList.add("onHoverDescription");
 				projects[1].classList.remove("onHover");
-				descriptions[1].classList.remove("onHoverDescription");
 
 	}
 	else if (lowerTimeline.id == "one"){
 				projects[1].classList.add("onHover");
-				descriptions[1].classList.add("onHoverDescription");
 				projects[0].classList.remove("onHover");
-				descriptions[0].classList.remove("onHoverDescription");
 				projects[2].classList.remove("onHover");
-				descriptions[2].classList.remove("onHoverDescription");
 	}
 	else if (lowerTimeline.id == "two"){
 				projects[2].classList.add("onHover");
@@ -102,7 +96,7 @@ function scroll() {
 				projects[5].classList.remove("onHover");
 	}
 
-	var upperTimeline = document.elementFromPoint(mouseX, mouseY);
+	/*var upperTimeline = document.elementFromPoint(mouseX, mouseY);
 	if (upperTimeline.id == "d-zero"){
 				descriptions[0].classList.add("onHover");
 				descriptions[1].classList.remove("onHover");
@@ -136,7 +130,7 @@ function scroll() {
 	else if (upperTimeline.id == "d-six"){
 				descriptions[6].classList.add("onHover");
 				descriptions[5].classList.remove("onHover");
-	}
+	}*/
 }
 
 // function to stop the scrolling
@@ -187,7 +181,9 @@ function unslide(event) {
 	}
 }
 
-function timelineHover(event){
-	projects[i].classList.remove("onHover");
-}
+/*function timelineHover(event){
+	for (i = 0; i < project.length; i++){
+		projects[i].classList.remove("onHover");
+	}
+}*/
 

@@ -50,6 +50,11 @@ nav#timeline li:hover .description {
 	color: #CCC;
 }
 
+nav#timeline .onHover .description {
+	color: #CCC;
+}
+
+
 .onHover{
 	-webkit-filter: saturate(0);
 }
