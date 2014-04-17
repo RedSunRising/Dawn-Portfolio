@@ -59,11 +59,6 @@ nav#timeline .onHover .description {
 	-webkit-filter: saturate(0);
 }
 
-.onHoverDescription{
-	color: #CCC;
-	-webkit-transition: 300ms ease;
-}
-
 /* Applied to the active panel and all to the left */
 .slideLeft{
 	-webkit-transform: translateX(-25px);

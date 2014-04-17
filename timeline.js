@@ -11,6 +11,7 @@ var mouseY = null;
 var scrollTimeline = null;
 var updateInterval = 15;
 var scrolling = false;
+var parentLi = document.getElementById('timeline');
 
 // sets the mouseX and mouseY variables
 window.onmousemove = function(event) {
@@ -50,18 +51,26 @@ function scroll() {
 	var distanceToCenter = Math.abs(window.innerWidth/2-mouseX);
 	var speed = distanceToCenter/(window.innerWidth/2);
 	if (mouseX < buffer) {
-		console.log('left');
 		scrolling = true;
 		scrollLeft(speed);
 	}
 	else if ((window.innerWidth - mouseX) < buffer) {
-		console.log('right');
 		scrolling = true;
 		scrollRight(speed);
 	}
 
-	var lowerTimeline = document.elementFromPoint(mouseX, mouseY);
-	if (lowerTimeline.id == "zero"){
+	var hoveredTimeline = document.elementFromPoint(mouseX, mouseY);
+
+	for (i = 0; i < projects.length; i++) {
+		var test = isDecendent(parentLi, hoveredTimeline);
+		console.log(hoveredTimeline);
+		console.log(test);
+		if (test == true){
+			
+		}
+	}
+
+	/*if (lowerTimeline.id == "zero"){
 				projects[0].classList.add("onHover");
 				projects[1].classList.remove("onHover");
 
@@ -94,7 +103,7 @@ function scroll() {
 	else if (lowerTimeline.id == "six"){
 				projects[6].classList.add("onHover");
 				projects[5].classList.remove("onHover");
-	}
+	}*/
 
 	/*var upperTimeline = document.elementFromPoint(mouseX, mouseY);
 	if (upperTimeline.id == "d-zero"){
@@ -131,6 +140,17 @@ function scroll() {
 				descriptions[6].classList.add("onHover");
 				descriptions[5].classList.remove("onHover");
 	}*/
+}
+
+function isDecendent(parent, child){
+	var node = child.parentNode; 
+	while (node != null) { 
+		if (node == parent){ 
+			return true;
+		} 
+		node = node.parentNode;
+	} 
+	return false;
 }
 
 // function to stop the scrolling
