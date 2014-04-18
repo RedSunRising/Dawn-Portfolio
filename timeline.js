@@ -12,6 +12,7 @@ var scrollTimeline = null;
 var updateInterval = 15;
 var scrolling = false;
 var parentLi = document.getElementById('timeline');
+console.log(parentLi);
 
 // sets the mouseX and mouseY variables
 window.onmousemove = function(event) {
@@ -31,9 +32,8 @@ for (i = 0; i < projects.length; i++) {
 	//projects[i].onmouseout = timelineHover;
 }
 
-var descriptions = document.querySelectorAll('#timeline description');
+var descriptions = document.querySelectorAll('#timeline .description');
 descriptions = Array.prototype.slice.call(descriptions);
-console.log(descriptions);
 
 // Global access to the timeline container
 var timeline = document.querySelector("#timeline");
@@ -60,13 +60,14 @@ function scroll() {
 	}
 
 	var hoveredTimeline = document.elementFromPoint(mouseX, mouseY);
-
-	for (i = 0; i < projects.length; i++) {
-		var test = isDecendent(parentLi, hoveredTimeline);
-		console.log(hoveredTimeline);
-		console.log(test);
-		if (test == true){
-			
+	
+	var test = isDecendent(parentLi, hoveredTimeline);
+	console.log(test);
+	
+	if (test == true){
+		for (i = 0; i < projects.length; i++){
+			var findParentProject = getParentProject(projects[i], hoveredTimeline);
+			console.log(findParentProject);
 		}
 	}
 
@@ -153,6 +154,15 @@ function isDecendent(parent, child){
 	return false;
 }
 
+function getParentProject(parent, child){
+	var node = child.parentNode;
+	while (node != null){
+		if(node == parent){
+			return node;
+		}
+		node = node.parentNode;
+	}	
+}
 // function to stop the scrolling
 function stopAnimation(){
 		for (i = 0; i < projects.length; i++) {
