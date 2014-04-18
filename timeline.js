@@ -65,10 +65,10 @@ function scroll() {
 	console.log(test);
 	
 	if (test == true){
-		for (i = 0; i < projects.length; i++){
-			var findParentProject = getParentProject(projects[i], hoveredTimeline);
-			console.log(findParentProject);
-		}
+		i = 0;
+		var findParentProject = getParentProject(projects[i], hoveredTimeline);
+		if (typeof findParentProject === 'undefined'){
+			i++;
 	}
 
 	/*if (lowerTimeline.id == "zero"){
