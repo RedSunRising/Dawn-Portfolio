@@ -12,7 +12,6 @@ var scrollTimeline = null;
 var updateInterval = 15;
 var scrolling = false;
 var parentLi = document.getElementById('timeline');
-console.log(parentLi);
 
 // sets the mouseX and mouseY variables
 window.onmousemove = function(event) {
@@ -62,85 +61,21 @@ function scroll() {
 	var hoveredTimeline = document.elementFromPoint(mouseX, mouseY);
 	
 	var test = isDecendent(parentLi, hoveredTimeline);
-	console.log(test);
+	//console.log("h: " + hoveredTimeline.parentNode);
 	
 	if (test == true){
-		i = 0;
-		var findParentProject = getParentProject(projects[i], hoveredTimeline);
-		if (typeof findParentProject === 'undefined'){
-			i++;
+		for (i = 0; i < projects.length; i++){
+			var findParentProject = getParentProject(projects[i], hoveredTimeline);
+			console.log(findParentProject);
+			if (typeof findParentProject == 'undefined'){
+				projects[i].classList.remove('onHover');
+				console.log(projects[i]);
+			}
+			else {
+				projects[i].classList.add('onHover');
+			}
+		}
 	}
-
-	/*if (lowerTimeline.id == "zero"){
-				projects[0].classList.add("onHover");
-				projects[1].classList.remove("onHover");
-
-	}
-	else if (lowerTimeline.id == "one"){
-				projects[1].classList.add("onHover");
-				projects[0].classList.remove("onHover");
-				projects[2].classList.remove("onHover");
-	}
-	else if (lowerTimeline.id == "two"){
-				projects[2].classList.add("onHover");
-				projects[1].classList.remove("onHover");
-				projects[3].classList.remove("onHover");
-	}
-	else if (lowerTimeline.id == "three"){
-				projects[3].classList.add("onHover");
-				projects[2].classList.remove("onHover");
-				projects[4].classList.remove("onHover");
-	}	
-	else if (lowerTimeline.id == "four"){
-				projects[4].classList.add("onHover");
-				projects[3].classList.remove("onHover");
-				projects[5].classList.remove("onHover");
-	}
-	else if (lowerTimeline.id == "five"){
-				projects[5].classList.add("onHover");
-				projects[4].classList.remove("onHover");
-				projects[6].classList.remove("onHover");
-	}
-	else if (lowerTimeline.id == "six"){
-				projects[6].classList.add("onHover");
-				projects[5].classList.remove("onHover");
-	}*/
-
-	/*var upperTimeline = document.elementFromPoint(mouseX, mouseY);
-	if (upperTimeline.id == "d-zero"){
-				descriptions[0].classList.add("onHover");
-				descriptions[1].classList.remove("onHover");
-
-	}
-	else if (upperTimeline.id == "d-one"){
-				descriptions[1].classList.add("onHover");
-				descriptions[0].classList.remove("onHover");
-				descriptions[2].classList.remove("onHover");
-	}
-	else if (upperTimeline.id == "d-two"){
-				descriptions[2].classList.add("onHover");
-				descriptions[1].classList.remove("onHover");
-				descriptions[3].classList.remove("onHover");
-	}
-	else if (upperTimeline.id == "d-three"){
-				descriptions[3].classList.add("onHover");
-				descriptions[2].classList.remove("onHover");
-				descriptions[4].classList.remove("onHover");
-	}	
-	else if (upperTimeline.id == "d-four"){
-				descriptions[4].classList.add("onHover");
-				descriptions[3].classList.remove("onHover");
-				descriptions[5].classList.remove("onHover");
-	}
-	else if (upperTimeline.id == "d-five"){
-				descriptions[5].classList.add("onHover");
-				descriptions[4].classList.remove("onHover");
-				descriptions[6].classList.remove("onHover");
-	}
-	else if (upperTimeline.id == "d-six"){
-				descriptions[6].classList.add("onHover");
-				descriptions[5].classList.remove("onHover");
-	}*/
 }
 
 function isDecendent(parent, child){
